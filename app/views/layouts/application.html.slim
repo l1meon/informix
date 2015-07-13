@@ -4,9 +4,73 @@ head
   meta charset="UTF-8"/
   meta name="viewport" content="width=device-width, initial-scale=1.0"/
   title = content_for?(:title) ? yield(:title) : "foundation-rails"
-  = stylesheet_link_tag    "application"
+  = stylesheet_link_tag    "application", 'data-turbolinks-track' => true
   = javascript_include_tag "vendor/modernizr"
-  = javascript_include_tag "application", 'data-turbolinks-track' => true
   = csrf_meta_tags 
-body
+body class="#{controller.controller_name}"
+  header#header
+    hgroup#top-header-group.clearfix
+      h1.left Informix
+      h2.right Be informed in everything you want
+    .sticky
+      nav.top-bar data-topbar="" role="navigation" data-options="sticky_on: [small,medium,large]"
+        ul.title-area
+          li.name
+            h1 = link_to '', '#'
+          li.toggle-topbar.menu-icon = link_to '#' do
+            span
+        section.top-bar-section
+          ul.right
+            li = link_to 'Sign In', '#'
+            li = link_to 'Sign Up', '#'
+          ul.left
+            li.active = link_to 'Home', '#'
+            li.has-dropdown
+              = link_to 'Articles', '#'
+              ul.dropdown
+                li = link_to 'Economy', '#'
+                li = link_to 'Phsycology', '#'
+            li = link_to 'News', '#'
+            li = link_to 'Business', '#'
+            li = link_to 'Comedy', '#'
+            li = link_to 'Life Hack', '#'
+  .row.clearfix
+    main#main-content.small-9.medium-10.large-10.left
+      ul.small-block-grid-1.medium-block-grid-1.large-block-grid-2
+        li
+          article.article
+            section.medium-12
+              header
+                hgroup.text-center
+                  h1 This is an article about Economy
+                  h2 Economy of the world
+              = link_to '#', class: 'blok medium-6 medium-centered' do
+                = image_tag('economy.jpg')
+        li
+          article.article
+            section
+              header
+                hgroup
+                  h1 This is an article about Economy
+                  h2 Economy of the world
+        li
+          article.article
+            section
+              header
+                hgroup
+                  h1 This is an article about Economy
+                  h2 Economy of the world
+    aside#aside-nav.small-2.medium-2.large-2.right
+      ul.side-nav
+        ul
+          li = link_to 'Side link', '#'
+          li = link_to 'Side link', '#'
+          li = link_to 'Side link', '#'
+          li = link_to 'Side link', '#'
+          li = link_to 'Side link', '#'
+  footer#footer
+    p &copy; 2015 Informix
+  
+      
   == yield
+  = javascript_include_tag "application", 'data-turbolinks-track' => true
