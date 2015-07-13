@@ -1,0 +1,21 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  # For details on connection pooling, see rails configuration guide
+  # http://guides.rubyonrails.org/configuring.html#database-pooling
+  pool: 5
+  user: dima
+  password: limitless
+  host: localhost
+
+development:
+  <<: *default
+  database: informix_development
+
+test:
+  <<: *default
+  database: informix_test
+
+production:
+  <<: *default
+  database: informix_production
